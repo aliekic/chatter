@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" width="200" height="150">
+  <!-- Outer Bubble -->
+  <path d="M50 40 Q20 70, 50 100 Q80 130, 120 100 Q150 70, 120 40 Q90 10, 50 40 Z" fill="rgb(0, 72, 179)" stroke="#0056b3" stroke-width="3"/>
+  
+  <!-- Inner Bubble (just offset for a 3D look) -->
+  <path d="M55 45 Q30 75, 55 95 Q80 115, 110 95 Q135 75, 110 45 Q85 20, 55 45 Z" fill="rgb(0, 72, 179)" opacity="0.7"/>
+  
+  <!-- Small Arrow (representing message sending) -->
+  <polygon points="85,110 95,120 115,110" fill="#0056b3" />
+
+  <!-- Text inside the bubble -->
+  <text x="50%" y="60%" font-family="Arial" font-size="20" text-anchor="middle" fill="#ffffff">
+    Chat
+  </text>
+</svg>

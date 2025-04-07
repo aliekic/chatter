@@ -1,6 +1,5 @@
 import mongoose, { Document, Schema } from "mongoose";
 
-// Define the Message interface
 export interface IMessage extends Document {
     message: {
         text: string;
@@ -11,7 +10,6 @@ export interface IMessage extends Document {
     updatedAt: Date;
 }
 
-// Define the Message schema
 const MessageSchema = new Schema<IMessage>(
     {
         message: {
@@ -29,5 +27,4 @@ const MessageSchema = new Schema<IMessage>(
     }
 );
 
-// Create and export the Message model
 export default mongoose.model<IMessage>("Messages", MessageSchema); 

@@ -1,13 +1,13 @@
 # Chatter
 
-Chatter is a real-time chat application that allows users to communicate instantly with a modern and intuitive interface. The application consists of a TypeScript-based frontend and a Node.js backend.
+Chatter is a real-time chat application that allows users to communicate instantly with a modern and intuitive interface. The application consists of a TypeScript-based frontend and a TypeScript-based backend.
 
 ## Project Overview
 
 This repository contains both the frontend and backend components of the Chatter application:
 
 - **Frontend**: A React application built with TypeScript, providing a modern UI for user interaction
-- **Backend**: A Node.js/Express server handling authentication, data storage, and real-time communication
+- **Backend**: A Node.js/Express server built with TypeScript, handling authentication, data storage, and real-time communication
 
 ## Features
 
@@ -35,6 +35,7 @@ This repository contains both the frontend and backend components of the Chatter
 ### Backend
 - Node.js
 - Express.js
+- TypeScript
 - MongoDB with Mongoose
 - Socket.io
 - JWT for authentication
@@ -90,9 +91,9 @@ npm install
    Start the backend server:
    ```bash
    cd server
-   yarn start
+   yarn dev
    # or
-   npm start
+   npm run dev
    ```
 
    Start the frontend development server:
@@ -103,38 +104,73 @@ npm install
    npm start
    ```
 
-The frontend will be available at [http://localhost:3000](http://localhost:3000) and the backend at [http://localhost:5000](http://localhost:5000).
+5. Build for production:
+
+   Build the backend:
+   ```bash
+   cd server
+   yarn build
+   # or
+   npm run build
+   ```
+
+   Build the frontend:
+   ```bash
+   cd public
+   yarn build
+   # or
+   npm run build
+   ```
 
 ## Project Structure
 
+### Backend
 ```
-chatter/
-├── public/           # Frontend React application
-│   ├── src/          # Source code
-│   ├── public/       # Static assets
-│   └── package.json  # Frontend dependencies
-├── server/           # Backend Node.js application
-│   ├── controllers/  # Request handlers
-│   ├── models/       # Mongoose models
-│   ├── routes/       # API routes
-│   └── package.json  # Backend dependencies
-└── README.md         # This file
+server/
+├── controllers/     # Request handlers
+├── models/          # Mongoose models
+├── routes/          # API routes
+├── types/           # TypeScript type definitions
+├── index.ts         # Main server file
+├── tsconfig.json    # TypeScript configuration
+├── .env             # Environment variables
+└── package.json     # Dependencies and scripts
 ```
 
-## Documentation
+### Frontend
+```
+public/
+├── src/
+│   ├── components/  # React components
+│   ├── context/     # React context providers
+│   ├── pages/       # Page components
+│   ├── styles/      # CSS styles
+│   ├── types/       # TypeScript type definitions
+│   ├── utils/       # Utility functions
+│   ├── App.tsx      # Main App component
+│   └── index.tsx    # Entry point
+├── public/          # Static assets
+└── package.json     # Dependencies and scripts
+```
 
-For more detailed information about each component:
+## API Endpoints
 
-- [Frontend Documentation](public/README.md)
-- [Backend Documentation](server/README.md)
+### Authentication
+- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/login` - Login a user
+- `POST /api/auth/setavatar/:id` - Set user avatar
+- `GET /api/auth/logout/:id` - Logout a user
+- `GET /api/auth/allusers/:id` - Get all users except the current user
 
-## Contributing
+### Messages
+- `POST /api/messages/addmsg` - Add a new message
+- `POST /api/messages/getmsg` - Get messages between users
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+## Socket.io Events
+
+- `add-user` - Add a user to the online users list
+- `send-msg` - Send a message to a specific user
+- `msg-recieve` - Receive a message from another user
 
 ## License
 
